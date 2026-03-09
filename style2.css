@@ -1,0 +1,375 @@
+root {
+    /* Brand colors */
+    --color-primary : #1b5cff;
+    --color-primary-dark : #1246c2;
+    --color-secondary: #0f9d58;
+    --color-background: #f6f8fc; /* backgound color */
+    --color-surface: #ffffff;
+    --color-text: #1f2937;
+    --color-intro-text : #25293f;
+    --color-footer-bg :  #1f2937;
+    --color-border: #e5e7eb;
+    --color-button : #1252f5;
+    --shadow-soft: 0 10px 25px rgba(15, 23, 42, 0.08);
+    /* end of brand colors */
+}
+
+/* Base Elements- general settings and properties */
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+   background: var(--color-background);
+   color: var(--color-text);
+   line-height: 1.6;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 12px;
+}
+
+ul {
+    list-style: none;
+}
+
+/* end of base elements */
+
+/* ===== SIDEBAR STYLES ===== */
+.sidebar-container {
+    min-height: 100vh;
+    display: flex;
+}
+
+.sidebar {
+    width: 280px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    z-index: 1050;
+    transition: transform 0.3s ease;
+    border-right: 2px solid var(--color-border);
+    transform: translateX(-100%);
+    background: var(--color-surface);
+}
+
+.sidebar.active {
+    transform: translateX(0);
+}
+
+.sidebar-header {
+    padding: 24px;
+    border-bottom: 1px solid var(--color-border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.sidebar-header .navbar-brand {
+    font-size: 1.5rem;
+}
+
+.btn-close-sidebar {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--color-text);
+    padding: 0;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sidebar .nav {
+    padding: 20px 0;
+}
+
+.sidebar .nav-link {
+    padding: 12px 24px;
+    color: var(--color-text);
+    border-radius: 0;
+    margin: 0 12px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    border-left: 3px solid transparent;
+    text-decoration: none;
+}
+
+.sidebar .nav-link:hover,
+.sidebar .nav-link.active {
+    background: var(--color-background);
+    color: var(--color-primary);
+    border-left-color: var(--color-primary);
+}
+
+.sidebar .nav-link i {
+    margin-right: 12px;
+    width: 20px;
+}
+
+.sidebar-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1040;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.sidebar-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.main-content {
+    flex: 1;
+    margin-left: 0;
+    transition: margin-left 0.3s ease;
+    min-height: 100vh;
+}
+
+body.sidebar-open {
+    overflow: hidden;
+}
+
+.sidebar-toggle {
+    background: var(--color-surface);
+    border: 2px solid var(--color-border);
+    border-radius: 10px;
+    padding: 10px 15px;
+    color: var(--color-text);
+    font-size: 1.2rem;
+}
+
+/* ===== RESPONSIVE BEHAVIOR ===== */
+@media (min-width: 992px) {
+    .sidebar {
+        transform: translateX(0);
+        position: relative;
+        z-index: 100;
+    }
+    
+    .main-content {
+        margin-left: 280px;
+    }
+    
+    .sidebar-toggle,
+    .sidebar-overlay,
+    .btn-close-sidebar {
+        display: none !important;
+    }
+    
+    .sidebar-header {
+        border-bottom: none;
+        padding: 24px 24px 16px;
+    }
+}
+
+@media (max-width: 991.98px) {
+    .main-content {
+        margin-left: 0;
+    }
+}
+
+/* ===== OLD HEADER STYLES (REMOVED - NO LONGER NEEDED) ===== */
+/* These were replaced by sidebar styles above */
+
+/* shared section layout and properties */
+section {
+    padding: 64px 24px;
+}
+
+.container {
+    max-width : 1100px;
+    margin: 0 auto;
+}
+
+.section-intro {
+    color : var(--color-intro-text);
+    max-width: 600px;
+}
+
+.section-media {
+    border-radius: 15px;
+    box-shadow: var(--shadow-soft); 
+    padding : 12px;
+    background: var(--color-surface);
+}
+
+.container h2 {
+    font-size: 26px;
+}
+
+.container h1 {
+    font-size: 35px;
+}
+
+/* end of shared section layout and properties */
+
+/* start of herosection */
+.hero-section {
+    padding : 72px 0 56px;
+}
+
+.hero-content h1{
+    font-size: 35px;
+    font-weight: bold;
+}
+
+.hero-content p {
+    margin-top: 30px;
+    color : var(--color-text);
+    font-size: 17px;
+}
+
+.hero-content span{
+    color : var(--color-primary);
+    font-weight: bold;
+}
+
+.cta-buttons {
+    display: flex;
+    flex: wrap;
+    gap: 16px;
+    margin-top:20px;
+}
+
+.btn-primary, .btn-secondary {
+    padding: 12px 24px;
+    background-color: var(--color-button);
+    border-radius: 999px;
+    border: 2px solid transparent;
+    color: var(--color-surface);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.btn-primary:hover {
+    background-color: var(--color-primary-dark);
+    color: var(--color-secondary);
+}   
+
+/* about section starts here  */
+.about-card {
+    background: var(--color-surface);
+    border-radius: 18px;
+    padding: 20px;
+    box-shadow: var(--shadow-soft);
+}
+
+.feature-card,
+.stat-card,
+.reason-item,
+.faq-item,
+.testimonial-card {
+    background: var(--color-surface);
+    border-radius: 18px;
+    padding: 20px;
+    box-shadow: var(--shadow-soft);
+    border : 1px solid var(--color-border);
+}
+
+/* dropdown icon and collapsible faq styles */
+details.faq-item {
+    cursor: pointer;
+    margin-bottom: 12px;
+}
+
+details.faq-item summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    list-style: none;
+    font-weight: 600;
+}
+
+details.faq-item summary::-webkit-details-marker {
+    display: none;
+}
+
+.faq-icon {
+    transition: transform .3s ease;
+}
+
+details.faq-item[open] .faq-icon {
+    transform: rotate(180deg);
+}
+
+details.faq-item p {
+    margin-top: 8px;
+    color: var(--color-text);
+}
+
+/* SECTION PADDING ADJUSTMENTS FOR SIDEBAR */
+.hero-section,
+.about-section,
+.features-section,
+.stats-section,
+.why-choose-section,
+.testimonials-section,
+.faq-section {
+    padding-left: 24px;
+    padding-right: 24px;
+}
+
+@media (min-width: 992px) {
+    .hero-section,
+    .about-section,
+    .features-section,
+    .stats-section,
+    .why-choose-section,
+    .testimonials-section,
+    .faq-section {
+        padding-left: 48px;
+        padding-right: 48px;
+    }
+}
+
+/* footer section starts here */
+footer {
+    background : var(--color-footer-bg);
+    color : var(--color-surface);
+    padding: 40px 24px;
+    margin-left: 0 !important;
+}
+
+@media (min-width: 992px) {
+    footer {
+        margin-left: 280px;
+    }
+}
+
+.footer-links ul{
+    display : flex;
+    flex-direction: column;
+    gap: 9px;
+    list-style: none;
+}
+
+.footer-links a {
+    color: var(--color-surface);
+    text-decoration: none;
+}
+
+.footer-links a:hover {
+    text-decoration: underline;
+    color : var(--color-secondary);
+}
+
+/* BLOG PAGE STYLES */
